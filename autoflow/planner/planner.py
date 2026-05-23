@@ -137,7 +137,10 @@ class NLPlanner:
                             "prompt": (
                                 f"Generate code for: {user_request}"
                                 if not deps
-                                else f"Generate code for: {user_request}\nUse previous output: {{{{step_{idx - 1}.output}}}}"
+                                else (
+                                    f"Generate code for: {user_request}\n"
+                                    f"Use previous output: {{{{step_{idx - 1}.output}}}}"
+                                )
                             ),
                             "temperature": 0.2,
                         },

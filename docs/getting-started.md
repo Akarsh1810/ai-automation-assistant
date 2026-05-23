@@ -1,5 +1,7 @@
 # Getting Started
 
+> 📸 **Visual walkthrough:** See the [Screenshots Gallery](screenshots.md) for CLI output previews.
+
 ## Prerequisites
 
 - Python 3.11+

@@ -12,6 +12,17 @@ Turn natural language into automated, multi-step workflows. Orchestrate LLM call
 - **Pluggable Tools** — Web search, file I/O, code execution, shell commands
 - **Rich CLI** — Beautiful terminal output with Typer + Rich
 
+## Screenshots
+
+| | | |
+|---|---|---|
+| ![CLI Help](docs/screenshots/01-help.svg) | ![Run Workflow](docs/screenshots/03-run.svg) | ![Verbose Output](docs/screenshots/04-run-verbose.svg) |
+| **CLI Overview** — 6 commands | **NL → Workflow** — single command | **Verbose mode** — per-step details |
+| ![Run History](docs/screenshots/05-list-runs.svg) | ![Inspect Run](docs/screenshots/06-show.svg) | ![Failed Run](docs/screenshots/07-failed.svg) |
+| **Persistent state** — all runs tracked | **Debug** — step outputs visible | **Error recovery** — resume support |
+
+[View full gallery →](docs/screenshots.md)
+
 ## Quick Start
 
 ```bash
