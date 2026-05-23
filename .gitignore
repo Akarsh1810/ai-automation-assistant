@@ -6,3 +6,7 @@ __pycache__/
 .autoflow/
 dist/
 build/
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+*.db
