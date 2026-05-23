@@ -1,0 +1,45 @@
+{
+  "title": "Code Generator",
+  "description": "Generate, test, and save a Python utility function",
+  "steps": [
+    {
+      "id": "step_01",
+      "label": "Write Python function",
+      "config": {
+        "type": "llm_call",
+        "params": {
+          "prompt": "Write a Python function that validates email addresses using regex. Include a docstring and type hints. Return only the code, no explanation.",
+          "temperature": 0.2
+        },
+        "depends_on": [],
+        "retry_count": 2
+      }
+    },
+    {
+      "id": "step_02",
+      "label": "Test the function",
+      "config": {
+        "type": "code_exec",
+        "params": {
+          "code": "{{step_01.output}}\n\nif __name__ == '__main__':\n    assert validate_email('test@example.com') == True\n    assert validate_email('invalid') == False\n    assert validate_email('') == False\n    print('All tests passed!')\n",
+          "language": "python"
+        },
+        "depends_on": ["step_01"],
+        "retry_count": 2
+      }
+    },
+    {
+      "id": "step_03",
+      "label": "Save to file",
+      "config": {
+        "type": "file_write",
+        "params": {
+          "path": "./email_validator.py",
+          "content": "{{step_01.output}}"
+        },
+        "depends_on": ["step_02"],
+        "retry_count": 1
+      }
+    }
+  ]
+}

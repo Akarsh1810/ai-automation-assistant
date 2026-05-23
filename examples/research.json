@@ -1,0 +1,44 @@
+{
+  "title": "AI Research & Report",
+  "description": "Research a topic, summarize findings, and save to a markdown report",
+  "steps": [
+    {
+      "id": "step_01",
+      "label": "Search web for topic",
+      "config": {
+        "type": "web_search",
+        "params": {
+          "query": "latest advancements in AI 2026"
+        },
+        "depends_on": [],
+        "retry_count": 2
+      }
+    },
+    {
+      "id": "step_02",
+      "label": "Summarize search results",
+      "config": {
+        "type": "llm_call",
+        "params": {
+          "prompt": "Summarize the following search results into key findings:\n\n{{step_01.output}}",
+          "temperature": 0.3
+        },
+        "depends_on": ["step_01"],
+        "retry_count": 3
+      }
+    },
+    {
+      "id": "step_03",
+      "label": "Save report to file",
+      "config": {
+        "type": "file_write",
+        "params": {
+          "path": "./ai-research-report.md",
+          "content": "# AI Research Report\n\n{{step_02.output}}\n"
+        },
+        "depends_on": ["step_02"],
+        "retry_count": 1
+      }
+    }
+  ]
+}
